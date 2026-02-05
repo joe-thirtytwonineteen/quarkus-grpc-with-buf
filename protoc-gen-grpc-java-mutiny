@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Wrapper script to invoke the Quarkus gRPC Mutiny protoc plugin
+
+set -e
+
+# Get the directory where this script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Get the classpath for the protocPlugins configuration
+PLUGIN_CLASSPATH=$(cd "$SCRIPT_DIR" && ./gradlew -q printProtocPluginClasspath)
+
+if [ -z "$PLUGIN_CLASSPATH" ]; then
+    echo "Error: Could not resolve protoc plugin classpath" >&2
+    exit 1
+fi
+
+# Invoke the Quarkus Mutiny gRPC generator
+exec java -cp "$PLUGIN_CLASSPATH" io.quarkus.grpc.protoc.plugin.MutinyGrpcGenerator "$@"
