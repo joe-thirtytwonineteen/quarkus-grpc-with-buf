@@ -28,8 +28,8 @@ dependencies {
     implementation("io.quarkus:quarkus-rest")
     implementation("javax.annotation:javax.annotation-api")
     implementation("build.buf:protovalidate:1.1.0")
-    implementation("com.google.protobuf:protobuf-java:4.33.2")
-    implementation("com.google.protobuf:protobuf-java-util:4.33.2")
+    implementation("com.google.protobuf:protobuf-java:4.33.5")
+    implementation("com.google.protobuf:protobuf-java-util:4.33.5")
     testImplementation("io.quarkus:quarkus-junit5")
     testImplementation("io.rest-assured:rest-assured")
 
@@ -39,8 +39,8 @@ dependencies {
 
 configurations.all {
     resolutionStrategy {
-        force("com.google.protobuf:protobuf-java:4.33.2")
-        force("com.google.protobuf:protobuf-java-util:4.33.2")
+        force("com.google.protobuf:protobuf-java:4.33.5")
+        force("com.google.protobuf:protobuf-java-util:4.33.5")
     }
 }
 
